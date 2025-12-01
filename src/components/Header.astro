@@ -1,0 +1,29 @@
+---
+import logo from '../assets/logo.svg';
+---
+
+<header class="w-full bg-[#4a4a4a] text-white py-4 shadow-lg fixed z-50">
+  <nav class="container mx-auto px-4 flex items-center justify-between">
+
+    <!-- Logo + Nombre -->
+    <div class="flex items-center gap-3 z-10">
+      <img 
+        src={logo.src} 
+        alt="Logo" 
+        class="h-12 w-auto select-none"
+      />
+      <h1 class="text-xl font-bold">Agencia de Modelaje</h1>
+    </div>
+
+    <!-- Navegación -->
+    <div class="flex items-center gap-6 text-lg font-semibold z-10">
+      <a href="/" class="hover:text-pink-300 transition-colors duration-300">Inicio</a>
+      <a href="/about" class="hover:text-pink-300 transition-colors duration-300">Quienes somos</a>
+      <a href="/gallery" class="hover:text-pink-300 transition-colors duration-300">Portafolio</a>
+      <a href="/experience" class="hover:text-pink-300 transition-colors duration-300">Experiencia</a>
+      <a href="/inscripciones" class="hover:text-pink-300 transition-colors duration-300">Inscripciones</a>
+      <a href="/contact" class="hover:text-pink-300 transition-colors duration-300">Contacto</a>
+    </div>
+
+  </nav>
+</header>

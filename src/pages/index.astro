@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Smoke from '../components/Smoke.astro';
+import fotoLogo from '../assets/logoo.png';
+---
+
+<Layout>
+  <Smoke />
+  <Header />
+
+  <main id="content" class="px-8 py-16 text-center">
+    <section id="inicio" class="max-w-3xl mx-auto py-20">
+      <img 
+        src={fotoLogo.src} 
+        alt="Foto de Nhasly López" 
+        class="w-48 h-48 mx-auto rounded-full border-4 border-white shadow-xl mb-6"/>
+      <h2 class="text-5xl font-extrabold mb-4">Nhasly Agencia Model</h2>
+      <p class="text-xl">Modelo profesional | Pasarela | Fotografía | Comercial</p>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

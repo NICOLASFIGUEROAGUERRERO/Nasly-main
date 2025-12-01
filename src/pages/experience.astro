@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Smoke from '../components/Smoke.astro';
+---
+
+<Layout>
+  <Smoke />
+  <Header />
+
+  <main id="content" class="px-8 py-16 text-center">
+
+    <section id="experience" class="py-20 max-w-3xl mx-auto text-left">
+      <h2 class="text-4xl font-bold mb-6 text-center">Experiencia</h2>
+
+      <div class="space-y-4">
+
+        <div>
+          <span
+            class="cursor-pointer text-lg font-semibold border-l-4 border-pink-500 pl-4 py-2 hover:text-pink-300 transition-colors"
+            onclick="document.getElementById('pasarela-content').classList.toggle('hidden')"
+          >
+            Pasarela 
+          </span>
+          <div
+            id="pasarela-content"
+            class="hidden mt-2 bg-transparent text-white p-4 rounded-t-none rounded-b-lg border-t-4 border-pink-500">
+            Desarrollo de presentaciones en pasarela con enfoque en elegancia, postura y control escénico. Participación en 
+            desfiles de moda, shows temáticos y exhibiciones creativas. Manejo de distintas dinámicas de pasarela, poses 
+            marcadas y tiempos de presentación según requerimientos del evento.
+          </div>
+        </div>
+
+        <div>
+          <span
+            class="cursor-pointer text-lg font-semibold border-l-4 border-purple-500 pl-4 py-2 hover:text-purple-300 transition-colors"
+            onclick="document.getElementById('fotografia-content').classList.toggle('hidden')">
+            Fotografía profesional
+          </span>
+          <div
+            id="fotografia-content"
+            class="hidden mt-2 bg-transparent text-white p-4 rounded-t-none rounded-b-lg border-t-4 border-purple-500">
+            Experiencia en sesiones fotográficas de estudio y en exteriores, abarcando estilos como moda editorial, 
+            artístico, beauty, comercial y retrato. Trabajo con diferentes tipos de iluminación, ángulos y composiciones, 
+            logrando imágenes que resaltan detalles, estética y presencia visual.
+          </div>
+        </div>
+
+        <div>
+          <span
+            class="cursor-pointer text-lg font-semibold border-l-4 border-yellow-500 pl-4 py-2 hover:text-yellow-300 transition-colors"
+            onclick="document.getElementById('modelaje-content').classList.toggle('hidden')">
+            Modelaje Comercial
+          </span>
+          <div
+            id="modelaje-content"
+            class="hidden mt-2 bg-transparent text-white p-4 rounded-t-none rounded-b-lg border-t-4 border-yellow-500">
+            Participación en campañas y producciones enfocadas en marcas, productos y anuncios publicitarios. 
+            Adaptación a estilos variados para catálogos, e-commerce, contenido promocional y material audiovisual. 
+            Enfoque en transmitir mensaje visual, versatilidad y naturalidad frente a cámara.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

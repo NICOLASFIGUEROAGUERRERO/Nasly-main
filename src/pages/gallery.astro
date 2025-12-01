@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Smoke from '../components/Smoke.astro';
+import pasarela from '../assets/pasarela.png'
+import fotografia from '../assets/fotografia.jpg'
+import modelaje from '../assets/modelaje.png'
+
+import {galleryData} from "src/data/gallery";
+const fotos = galleryData.fotografia;
+---
+<Layout>
+  <Smoke />
+  <Header />
+
+  <main id="content" class="px-8 py-16 text-center">
+    <section id="gallery" class="py-20">
+      <h2 class="text-4xl font-bold mb-10">Galería</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+        <!-- PASARELA -->
+        <div>
+          <a 
+            class="block group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+            onclick="document.getElementById('pasarela-box').classList.toggle('hidden')"
+          >
+            <img
+              src={pasarela.src}
+              alt="Pasarela"
+              class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300 border-4 border-white rounded-lg shadow-xl"/>
+          </a>
+
+          <div
+            id="pasarela-box"
+            class="hidden mt-4 bg-transparent text-white p-4 rounded-lg border-t-4 border-white">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {galleryData.pasarela.map((url) => (
+                <img
+                  src={url}
+                  alt="Pasarela"
+                  onclick={`openLightbox('${url}')`}
+                  class="w-full h-48 object-cover rounded-lg shadow-md cursor-pointer"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- FOTOGRAFÍA -->
+        <div>
+          <a 
+            class="block group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+            onclick="document.getElementById('foto-box').classList.toggle('hidden')">
+            <img
+              src={fotografia.src}
+              alt="Fotografía"
+              class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300 border-4 border-white rounded-lg shadow-xl"
+            />
+          </a>
+
+          <div
+            id="foto-box"
+            class="hidden mt-4 bg-transparent text-white p-4 rounded-lg border-t-4 border-white">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {galleryData.fotografia.map((url) => (
+                <img
+                  src={url}
+                  alt="Fotografía"
+                  onclick={`openLightbox('${url}')`}
+                  class="w-full h-48 object-cover rounded-lg shadow-md cursor-pointer"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- MODELAJE -->
+        <div>
+          <a 
+            class="block group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+            onclick="document.getElementById('modelaje-box').classList.toggle('hidden')">
+            <img 
+              src={modelaje.src}
+              alt="Etiqueta"
+              class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300 border-4 border-white rounded-lg shadow-xl"/>
+          </a>
+
+          <div
+            id="modelaje-box"
+            class="hidden mt-4 bg-transparent text-white p-4 rounded-lg border-t-4 border-white">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {galleryData.modelaje.map((url) => (
+                <img
+                  src={url}
+                  alt="Modelaje Comercial"
+                  onclick={`openLightbox('${url}')`}
+                  class="w-full h-48 object-cover rounded-lg shadow-md cursor-pointer"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+
+

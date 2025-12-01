@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Smoke from '../components/Smoke.astro';
+---
+
+<Layout>
+  <Smoke />
+  <Header />
+
+  <main id="content" class="px-8 py-16">
+    <section class="max-w-3xl mx-auto bg-white/5 backdrop-blur-sm rounded-lg p-8 shadow-lg">
+      <h2 class="text-3xl font-bold mb-4">Inscripciones</h2>
+      <p class="mb-6">Complete el formulario para enviar su solicitud. Un asesor se comunicará al número proporcionado.</p>
+
+      <form id="signup-form" class="space-y-4 text-left">
+        <div>
+          <label class="block mb-1 text-white">Nombre completo</label>
+          <input name="nombre" required class="w-full rounded px-3 py-2 text-white placeholder-white bg-transparent border border-white/20" placeholder="Ej. María Pérez" />
+        </div>
+
+        <div>
+          <label class="block mb-1 text-white">Correo electrónico</label>
+          <input name="correo" type="email" required class="w-full rounded px-3 py-2 text-white placeholder-white bg-transparent border border-white/20" placeholder="ejemplo@mail.com" />
+        </div>
+
+        <div>
+          <label class="block mb-1 text-white">Teléfono</label>
+          <input name="telefono" type="tel" required class="w-full rounded px-3 py-2 text-white placeholder-white bg-transparent border border-white/20" placeholder="+57 300 000 0000" />
+        </div>
+
+        <div>
+          <label class="block mb-1 text-white">Mensaje (opcional)</label>
+          <textarea name="mensaje" rows="4" class="w-full rounded px-3 py-2 text-white placeholder-white bg-transparent border border-white/20" placeholder="Cuéntanos sobre tu experiencia o disponibilidad"></textarea>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-2 rounded" id="submit-btn">Enviar solicitud</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <Footer />
+
+  
+  <div id="submission-modal" class="hidden fixed inset-0 z-50 bg-black/60">
+    <div class="hidden-inner flex items-center justify-center min-h-screen">
+      <div class="bg-white text-black rounded-lg max-w-lg w-full mx-4 p-6 shadow-lg">
+      <h3 class="text-2xl font-bold mb-2">Solicitud enviada</h3>
+      <p id="modal-message" class="mb-4">Su solicitud fue enviada. Nos comunicaremos a su número de teléfono proporcionado.</p>
+      <div class="text-right">
+        <button id="modal-close" class="px-4 py-2 bg-gray-800 text-white rounded">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('signup-form');
+      const modal = document.getElementById('submission-modal');
+      const modalMessage = document.getElementById('modal-message');
+      const closeBtn = document.getElementById('modal-close');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const submitBtn = document.getElementById('submit-btn');
+        const telefono = form.querySelector('input[name="telefono"]').value || '';
+
+        submitBtn.disabled = true;
+        const orig = submitBtn.textContent;
+        submitBtn.textContent = 'Enviando...';
+
+        
+        setTimeout(() => {
+          modalMessage.textContent = `Su solicitud fue enviada. Nos comunicaremos al número ${telefono} proporcionado.`;
+          
+          modal.classList.remove('hidden');
+          const inner = modal.querySelector('.hidden-inner');
+          if (inner) inner.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = orig;
+          form.reset();
+        }, 900);
+      });
+
+      closeBtn.addEventListener('click', () => {
+        const inner = modal.querySelector('.hidden-inner');
+        if (inner) inner.classList.add('hidden');
+        modal.classList.add('hidden');
+      });
+
+      
+      modal.addEventListener('click', (ev) => {
+        if (ev.target === modal) {
+          const inner = modal.querySelector('.hidden-inner');
+          if (inner) inner.classList.add('hidden');
+          modal.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+
+
+</Layout>

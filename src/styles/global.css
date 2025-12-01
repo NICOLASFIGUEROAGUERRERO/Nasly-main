@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+html, body {
+	height: 100%;
+	margin: 0;
+	background-color: #000 !important;
+	background-attachment: fixed !important;
+	background-repeat: no-repeat;
+	background-position: center center;
+	color: #fff;
+}
+
+/* Ensure any background elements cover full viewport and stay fixed */
+#smoke-bkg, #smoke-bkg canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+}
